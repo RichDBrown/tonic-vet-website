@@ -31,7 +31,7 @@ describe('Landing page', () => {
   })
 
   test('renders subtitle correctly', () => {
-    const subtitle = screen.getByText('Built by a veterinary assistant who needed it, too.')
+    const subtitle = screen.getByText("Built for busy vets who'd rather focus on patients, not paperwork.")
     expect(subtitle).toBeInTheDocument()
     expect(subtitle).toHaveClass('text-lg text-center mb-8')
   })

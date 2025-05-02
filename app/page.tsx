@@ -18,7 +18,7 @@ export default function LandingPage() {
           Tonic Vet is a fast, affordable AI scribe that listens to your exam and creates your SOAP notes &mdash; so you can focus on what matters most.
         </p>
         <p className="text-lg text-center mb-8">
-          Built by a veterinary assistant who needed it, too.
+          Built for busy vets who'd rather focus on patients, not paperwork.
         </p>
         <Link href='/waitlist' className="flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all">
           <p className="text-lg font-bold text-white">Join the waitlist</p>
