@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-primary: #3B82F6;
+  --color-secondary: #3C83F6;
+  --color-accent: #7C3AED;
+
+  --shadow-button: 0 1px 2px 0 rgb(0 0 0 / 0.3), 0 1px 3px 1px rgb(0 0 0 / 0.15);
+}
+
 body {
   background: #FFF;
-  color: #0F1729;
+  color: #64748B;
   font-family: system-ui, sans-serif;
 }
