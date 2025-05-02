@@ -2,12 +2,7 @@ import LandingPage from '@/app/page'
 import { render, screen } from '@testing-library/react'
 import userEvent, { UserEvent } from '@testing-library/user-event'
 
-describe('Landing page', () => {
-  let user: UserEvent
-
-  beforeAll(() => {
-    user = userEvent.setup()
-  })
+describe('First section of landing page', () => {
   beforeEach(() => {
     render(<LandingPage />)
   })
@@ -59,6 +54,17 @@ describe('Landing page', () => {
     const menuButton = screen.getByRole('button', { name: 'Open menu' })
     expect(menuButton).toBeInTheDocument()
     expect(menuButton).toHaveClass('h-10 w-10 flex items-center justify-center rounded-full hover:bg-accent active:bg-accent')
+  })
+})
+
+describe('Dialog of landing page', () => {
+  let user: UserEvent
+
+  beforeAll(() => {
+    user = userEvent.setup()
+  })
+  beforeEach(() => {
+    render(<LandingPage />)
   })
 
   test('renders pricing link correctly', () => {
