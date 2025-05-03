@@ -1,5 +1,6 @@
+import FeatureCard from '@/app/_ui/feature-card'
 import LandingPage from '@/app/page'
-import { render, screen } from '@testing-library/react'
+import { getByText, render, screen } from '@testing-library/react'
 import userEvent, { UserEvent } from '@testing-library/user-event'
 
 describe('First section of landing page', () => {
@@ -45,7 +46,7 @@ describe('First section of landing page', () => {
   })
 
   test('renders join the waitlist icon correctly', () => {
-    const icon = screen.getByAltText('')
+    const icon = screen.getByTestId('waitlist-icon-button')
     expect(icon).toBeInTheDocument()
     expect(icon).toHaveClass('ml-2 w-5 h-auto')
   })
@@ -100,5 +101,75 @@ describe('Dialog of landing page', () => {
     const closeDialogArea = screen.getByTestId('close-dialog')
     await user.click(closeDialogArea)
     expect(dialog).toHaveClass('flex h-full w-full fixed top-0 right-0 z-1 bg-black/80 transition-all duration-300 opacity-0 pointer-events-none')
+  })
+})
+
+describe('Second section of landing page', () => {
+  beforeEach(() => {
+    render(<LandingPage />)
+  })
+
+  test('renders headline of correctly', () => {
+    const headline = screen.getByText('Why Vets Love Tonic Vet')
+    expect(headline).toBeInTheDocument()
+    expect(headline).toHaveClass('text-3xl text-center font-bold mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent')
+  })
+
+  test('renders feature containers correctly', () => {
+    const containers = screen.getAllByTestId('feature-container')
+    expect(containers).toHaveLength(3)
+    containers.forEach((container) => {
+      expect(container).toBeInTheDocument()
+      expect(container).toHaveClass('flex flex-col items-center p-6 border border-[#C4C6D0] rounded-xl text-center')
+    })
+  })
+
+  test('renders feature icon containers correctly', () => {
+    const containers = screen.getAllByTestId('feature-icon-container')
+    expect(containers).toHaveLength(3)
+    
+    expect(containers[0]).toBeInTheDocument()
+    expect(containers[0]).toHaveClass('flex items-center justify-center h-12 w-12 bg-[#2463EB]/20 rounded-full')
+
+    expect(containers[1]).toBeInTheDocument()
+    expect(containers[1]).toHaveClass('flex items-center justify-center h-12 w-12 bg-[#7C3BED]/20 rounded-full')
+
+    expect(containers[2]).toBeInTheDocument()
+    expect(containers[2]).toHaveClass('flex items-center justify-center h-12 w-12 bg-[#0DA2E7]/20 rounded-full')
+  })
+
+  test('renders feature icons correctly', () => {
+    const icons = screen.getAllByTestId('feature-icon')
+    expect(icons).toHaveLength(3)
+    
+    icons.forEach((icon) => {
+      expect(icon).toBeInTheDocument()
+      expect(icon).toHaveClass('h-6 w-auto')
+    })
+  })
+
+  test('renders feature titles correctly', () => {
+    const firstFeatureTitle = screen.getByText('Smarter Notes Less Effort')
+    expect(firstFeatureTitle).toBeInTheDocument()
+    expect(firstFeatureTitle).toHaveClass('text-xl font-semibold mt-6 mb-4 text-primary')
+
+    const secondFeatureTitle = screen.getByText('Fast & Lightweight')
+    expect(secondFeatureTitle).toBeInTheDocument()
+    expect(secondFeatureTitle).toHaveClass('text-xl font-semibold mt-6 mb-4 text-accent')
+
+    const thirdFeatureTitle = screen.getByText('Built to Be Affordable')
+    expect(thirdFeatureTitle).toBeInTheDocument()
+    expect(thirdFeatureTitle).toHaveClass('text-xl font-semibold mt-6 mb-4 text-secondary')
+  })
+
+  test('renders feature descriptions correctly', () => {
+    const firstFeatureDescription = screen.getByText('Captures the key points from appointments — no fluff, no filler.')
+    expect(firstFeatureDescription).toBeInTheDocument()
+
+    const secondFeatureDescription = screen.getByText('No bloated features. Just upload, wait a few seconds, and get your notes.')
+    expect(secondFeatureDescription).toBeInTheDocument()
+
+    const thirdFeatureDescription = screen.getByText('We keep it simple so we can keep it affordable. No hidden fees. No nonsense.')
+    expect(thirdFeatureDescription).toBeInTheDocument()
   })
 })

@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import RightArrow from '@/public/right-arrow.svg'
 import MenuButton from "./_ui/menu-button";
+import FeatureCard from "./_ui/feature-card";
+import Brain from '@/public/brain.svg'
+import Lightning from '@/public/lightning.svg'
+import PiggyBank from '@/public/piggy-bank.svg'
 
 export default function LandingPage() {
   return (
@@ -10,7 +14,7 @@ export default function LandingPage() {
         <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">Tonic Vet</h1>
         <MenuButton />
       </header>
-      <section className="flex flex-col items-center">
+      <section className="flex flex-col items-center pb-24">
         <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6">
           Never Take SOAP Notes Again &mdash; Let Tonic Vet Handle It
         </h2>
@@ -22,8 +26,18 @@ export default function LandingPage() {
         </p>
         <Link href='/waitlist' className="flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all">
           <p className="text-lg font-bold text-white">Join the waitlist</p>
-          <Image src={RightArrow} alt="" className="ml-2 w-5 h-auto" />
+          <Image data-testid="waitlist-icon-button" src={RightArrow} alt="" className="ml-2 w-5 h-auto" />
         </Link>
+      </section>
+      <section className="flex flex-col py-24 items-center">
+        <h2 className="text-3xl text-center font-bold mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" >
+          Why Vets Love Tonic Vet
+        </h2>
+        <div className=" flex flex-col gap-y-12">
+          <FeatureCard imageContainerColor="bg-[#2463EB]/20" imgSrc={Brain} title="Smarter Notes Less Effort" titleTextColor="text-primary" description="Captures the key points from appointments — no fluff, no filler." />
+          <FeatureCard imageContainerColor="bg-[#7C3BED]/20" imgSrc={Lightning} title="Fast & Lightweight" titleTextColor="text-accent" description="No bloated features. Just upload, wait a few seconds, and get your notes." />
+          <FeatureCard imageContainerColor="bg-[#0DA2E7]/20" imgSrc={PiggyBank} title="Built to Be Affordable" titleTextColor="text-secondary" description="We keep it simple so we can keep it affordable. No hidden fees. No nonsense." />
+        </div>
       </section>
     </main>
   );
