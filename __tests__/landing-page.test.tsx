@@ -1,59 +1,92 @@
+import CompactHeader from '@/app/_ui/compact-header'
+import ExpandedHeader from '@/app/_ui/expanded-header'
 import LandingPage from '@/app/page'
 import { render, screen } from '@testing-library/react'
 import userEvent, { UserEvent } from '@testing-library/user-event'
 
 describe('Landing section of landing page', () => {
-  beforeEach(() => {
-    render(<LandingPage />)
-  })
+  test('renders compact header correctly', () => {
+    render(<CompactHeader />)
 
-  test('renders company title correctly', () => {
     const title = screen.getByRole('heading', { level: 1, name: 'Tonic Vet' })
     expect(title).toBeInTheDocument()
     expect(title).toHaveClass('text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent')
+
+    const menuButton = screen.getByRole('button', { name: 'Open menu' })
+    expect(menuButton).toBeInTheDocument()
+    expect(menuButton).toHaveClass('h-10 w-10 flex items-center justify-center rounded-full hover:bg-accent active:bg-accent')
+  })
+
+  test('renders expanded header correctly', () => {
+    render(<ExpandedHeader />)
+
+    const title = screen.getByRole('heading', { level: 1, name: 'Tonic Vet' })
+    expect(title).toBeInTheDocument()
+    expect(title).toHaveClass('text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent ml-6')
+
+    const pricingLink = screen.getByText('Pricing')
+    expect(pricingLink).toBeInTheDocument()
+    expect(pricingLink).toHaveAttribute('href', '/pricing')
+    expect(pricingLink).toHaveClass('px-6 py-2.5 rounded-full text-sm font-medium text-[#0F1729] hover:bg-accent hover:text-white active:bg-accent active:text-white')
+
+    const aboutUsLink = screen.getByText('About us')
+    expect(aboutUsLink).toBeInTheDocument()
+    expect(aboutUsLink).toHaveAttribute('href', '/about-us')
+    expect(aboutUsLink).toHaveClass('px-6 py-2.5 rounded-full text-sm font-medium text-[#0F1729] hover:bg-accent hover:text-white active:bg-accent active:text-white')
+
+    const logInLink = screen.getByText('Log in')
+    expect(logInLink).toBeInTheDocument()
+    expect(logInLink).toHaveAttribute('href', '/login')
+    expect(logInLink).toHaveClass('px-6 py-2.5 mr-6 rounded-full border border-primary text-sm font-medium text-primary hover:bg-primary hover:border-none hover:text-white active:bg-primary active:border-none active:text-white')
   })
 
   test('renders healine correctly', () => {
+    render(<LandingPage />)
+
     const headline = screen.getByText('Never Take SOAP Notes Again — Let Tonic Vet Handle It')
     expect(headline).toBeInTheDocument()
-    expect(headline).toHaveClass('text-4xl font-bold text-center bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6')
+    expect(headline).toHaveClass('text-4xl lg:text-6xl font-bold text-center bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6')
   })
 
   test('renders subheadline correctly', () => {
+    render(<LandingPage />)
+
     const subheadline = screen.getByText('Tonic Vet is a fast, affordable AI scribe that listens to your exam and creates your SOAP notes — so you can focus on what matters most.')
     expect(subheadline).toBeInTheDocument()
-    expect(subheadline).toHaveClass('text-xl text-center mb-4')
+    expect(subheadline).toHaveClass('text-xl lg:text-2xl text-center mb-4')
   })
 
   test('renders subtitle correctly', () => {
+    render(<LandingPage />)
+
     const subtitle = screen.getByText("Built for busy vets who'd rather focus on patients, not paperwork.")
     expect(subtitle).toBeInTheDocument()
     expect(subtitle).toHaveClass('text-lg text-center mb-8')
   })
 
   test('renders join the waitlist link correctly', () => {
+    render(<LandingPage />)
+
     const links = screen.getAllByRole('link', { name: 'Join the waitlist' })
     expect(links[0]).toBeInTheDocument()
     expect(links[0]).toHaveAttribute('href', '/waitlist')
-    expect(links[0]).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all')
+    expect(links[0]).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all md:w-auto md:px-6')
   })
 
   test('renders join the waitlist label correctly', () => {
+    render(<LandingPage />)
+
     const labels = screen.getAllByText('Join the waitlist')
     expect(labels[0]).toBeInTheDocument()
     expect(labels[0]).toHaveClass('text-lg font-bold text-white')
   })
 
   test('renders join the waitlist icon correctly', () => {
+    render(<LandingPage />)
+
     const icons = screen.getAllByTestId('waitlist-icon-button')
     expect(icons[0]).toBeInTheDocument()
     expect(icons[0]).toHaveClass('ml-2 w-5 h-auto')
-  })
-
-  test('renders menu button correctly', () => {
-    const menuButton = screen.getByRole('button', { name: 'Open menu' })
-    expect(menuButton).toBeInTheDocument()
-    expect(menuButton).toHaveClass('h-10 w-10 flex items-center justify-center rounded-full hover:bg-accent active:bg-accent')
   })
 })
 
@@ -64,7 +97,7 @@ describe('Dialog of landing page', () => {
     user = userEvent.setup()
   })
   beforeEach(() => {
-    render(<LandingPage />)
+    render(<CompactHeader />)
   })
 
   test('renders pricing link correctly', () => {
@@ -119,7 +152,7 @@ describe('Why vets love it section of landing page', () => {
     expect(containers).toHaveLength(3)
     containers.forEach((container) => {
       expect(container).toBeInTheDocument()
-      expect(container).toHaveClass('flex flex-col items-center p-6 border border-[#C4C6D0] rounded-xl text-center')
+      expect(container).toHaveClass('flex flex-col items-center flex-1 p-6 border border-[#C4C6D0] rounded-xl text-center')
     })
   })
 
@@ -245,7 +278,7 @@ describe('Interested section of landing page', () => {
     const links = screen.getAllByRole('link', { name: 'Join the waitlist' })
     expect(links[1]).toBeInTheDocument()
     expect(links[1]).toHaveAttribute('href', '/waitlist')
-    expect(links[1]).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all')
+    expect(links[1]).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all md:w-auto md:px-6')
   })
 
   test('renders join the waitlist label correctly', () => {

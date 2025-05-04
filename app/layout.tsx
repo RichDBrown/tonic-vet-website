@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import CompactHeader from "./_ui/compact-header";
+import ExpandedHeader from "./_ui/expanded-header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +18,8 @@ export default function RootLayout({
       <body
         className='antialiased'
       >
+        <CompactHeader />
+        <ExpandedHeader />
         {children}
       </body>
     </html>

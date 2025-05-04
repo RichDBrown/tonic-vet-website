@@ -8,7 +8,7 @@ type StepProps = {
 
 export default function Step({ num, numColor, numContainerColor, title, desc }: StepProps) {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center flex-1">
       <div className={`w-16 h-16 flex items-center justify-center rounded-full text-2xl font-semibold ${numColor} ${numContainerColor}`}>
         {num}
       </div>
