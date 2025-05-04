@@ -6,6 +6,7 @@ import FeatureCard from "./_ui/feature-card";
 import Brain from '@/public/brain.svg'
 import Lightning from '@/public/lightning.svg'
 import PiggyBank from '@/public/piggy-bank.svg'
+import Step from "./_ui/how-it-works-step";
 
 export default function LandingPage() {
   return (
@@ -33,10 +34,20 @@ export default function LandingPage() {
         <h2 className="text-3xl text-center font-bold mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" >
           Why Vets Love Tonic Vet
         </h2>
-        <div className=" flex flex-col gap-y-12">
+        <div className="flex flex-col gap-y-12">
           <FeatureCard imageContainerColor="bg-[#2463EB]/20" imgSrc={Brain} title="Smarter Notes Less Effort" titleTextColor="text-primary" description="Captures the key points from appointments — no fluff, no filler." />
           <FeatureCard imageContainerColor="bg-[#7C3BED]/20" imgSrc={Lightning} title="Fast & Lightweight" titleTextColor="text-accent" description="No bloated features. Just upload, wait a few seconds, and get your notes." />
           <FeatureCard imageContainerColor="bg-[#0DA2E7]/20" imgSrc={PiggyBank} title="Built to Be Affordable" titleTextColor="text-secondary" description="We keep it simple so we can keep it affordable. No hidden fees. No nonsense." />
+        </div>
+      </section>
+      <section className="flex flex-col py-24 items-center">
+        <h2 className="text-3xl text-center font-bold mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          How Tonic Vet Works
+        </h2>
+        <div className="flex flex-col gap-y-12 text-center">
+          <Step num="1" numColor="text-primary" numContainerColor="bg-[#2463EB]/20" title="Record your appointment" desc="Use Tonic Vet to capture the appointment — right from your phone, tablet, or computer." />
+          <Step num="2" numColor="text-accent" numContainerColor="bg-[#7C3BED]/20" title="We handle the rest" desc="Your recording is automatically turned into a clear, structured SOAP note in seconds." />
+          <Step num="3" numColor="text-secondary" numContainerColor="bg-[#0DA2E7]/20" title="Paste it into your PMS" desc="Review and tweak if needed, then copy and paste your finished notes directly into your practice management system." />
         </div>
       </section>
     </main>

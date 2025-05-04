@@ -126,7 +126,7 @@ describe('Why vets love it section of landing page', () => {
   test('renders feature icon containers correctly', () => {
     const containers = screen.getAllByTestId('feature-icon-container')
     expect(containers).toHaveLength(3)
-    
+
     expect(containers[0]).toBeInTheDocument()
     expect(containers[0]).toHaveClass('flex items-center justify-center h-12 w-12 bg-[#2463EB]/20 rounded-full')
 
@@ -140,7 +140,7 @@ describe('Why vets love it section of landing page', () => {
   test('renders feature icons correctly', () => {
     const icons = screen.getAllByTestId('feature-icon')
     expect(icons).toHaveLength(3)
-    
+
     icons.forEach((icon) => {
       expect(icon).toBeInTheDocument()
       expect(icon).toHaveClass('h-6 w-auto')
@@ -170,5 +170,56 @@ describe('Why vets love it section of landing page', () => {
 
     const thirdFeatureDescription = screen.getByText('We keep it simple so we can keep it affordable. No hidden fees. No nonsense.')
     expect(thirdFeatureDescription).toBeInTheDocument()
+  })
+})
+
+describe('How tonic vet works section of landing page', () => {
+  beforeEach(() => {
+    render(<LandingPage />)
+  })
+
+  test('renders headline correctly', () => {
+    const headline = screen.getByText('How Tonic Vet Works')
+    expect(headline).toBeInTheDocument()
+    expect(headline).toHaveClass('text-3xl text-center font-bold mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent')
+  })
+
+  test('renders step containers correctly', () => {
+    const step1 = screen.getByText('1')
+    expect(step1).toBeInTheDocument()
+    expect(step1).toHaveClass('w-16 h-16 flex items-center justify-center rounded-full text-2xl font-semibold text-primary bg-[#2463EB]/20')
+
+    const step2 = screen.getByText('2')
+    expect(step2).toBeInTheDocument()
+    expect(step2).toHaveClass('w-16 h-16 flex items-center justify-center rounded-full text-2xl font-semibold text-accent bg-[#7C3BED]/20')
+
+    const step3 = screen.getByText('3')
+    expect(step3).toBeInTheDocument()
+    expect(step3).toHaveClass('w-16 h-16 flex items-center justify-center rounded-full text-2xl font-semibold text-secondary bg-[#0DA2E7]/20')
+  })
+
+  test('renders step titles correctly', () => {
+    const step1Title = screen.getByText('Record your appointment')
+    expect(step1Title).toBeInTheDocument()
+    expect(step1Title).toHaveClass('text-xl font-semibold text-[#0F1729] mt-6 mb-2')
+
+    const step2Title = screen.getByText('We handle the rest')
+    expect(step2Title).toBeInTheDocument()
+    expect(step2Title).toHaveClass('text-xl font-semibold text-[#0F1729] mt-6 mb-2')
+
+    const step3Title = screen.getByText('Paste it into your PMS')
+    expect(step3Title).toBeInTheDocument()
+    expect(step3Title).toHaveClass('text-xl font-semibold text-[#0F1729] mt-6 mb-2')
+  })
+
+  test('renders step descriptions correctly', () => {
+    const step1Desc = screen.getByText('Use Tonic Vet to capture the appointment — right from your phone, tablet, or computer.')
+    expect(step1Desc).toBeInTheDocument()
+
+    const step2Desc = screen.getByText('Your recording is automatically turned into a clear, structured SOAP note in seconds.')
+    expect(step2Desc).toBeInTheDocument()
+
+    const step3Desc = screen.getByText('Review and tweak if needed, then copy and paste your finished notes directly into your practice management system.')
+    expect(step3Desc).toBeInTheDocument()
   })
 })
