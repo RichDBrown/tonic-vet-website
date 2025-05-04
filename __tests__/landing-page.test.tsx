@@ -32,22 +32,22 @@ describe('Landing section of landing page', () => {
   })
 
   test('renders join the waitlist link correctly', () => {
-    const link = screen.getByRole('link', { name: 'Join the waitlist' })
-    expect(link).toBeInTheDocument()
-    expect(link).toHaveAttribute('href', '/waitlist')
-    expect(link).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all')
+    const links = screen.getAllByRole('link', { name: 'Join the waitlist' })
+    expect(links[0]).toBeInTheDocument()
+    expect(links[0]).toHaveAttribute('href', '/waitlist')
+    expect(links[0]).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all')
   })
 
   test('renders join the waitlist label correctly', () => {
-    const label = screen.getByText('Join the waitlist')
-    expect(label).toBeInTheDocument()
-    expect(label).toHaveClass('text-lg font-bold text-white')
+    const labels = screen.getAllByText('Join the waitlist')
+    expect(labels[0]).toBeInTheDocument()
+    expect(labels[0]).toHaveClass('text-lg font-bold text-white')
   })
 
   test('renders join the waitlist icon correctly', () => {
-    const icon = screen.getByTestId('waitlist-icon-button')
-    expect(icon).toBeInTheDocument()
-    expect(icon).toHaveClass('ml-2 w-5 h-auto')
+    const icons = screen.getAllByTestId('waitlist-icon-button')
+    expect(icons[0]).toBeInTheDocument()
+    expect(icons[0]).toHaveClass('ml-2 w-5 h-auto')
   })
 
   test('renders menu button correctly', () => {
@@ -221,5 +221,42 @@ describe('How tonic vet works section of landing page', () => {
 
     const step3Desc = screen.getByText('Review and tweak if needed, then copy and paste your finished notes directly into your practice management system.')
     expect(step3Desc).toBeInTheDocument()
+  })
+})
+
+describe('Interested section of landing page', () => {
+  beforeEach(() => {
+    render(<LandingPage />)
+  })
+
+  test('renders headline correcly', () => {
+    const headline = screen.getByText('Interested in Tonic Vet?')
+    expect(headline).toBeInTheDocument()
+    expect(headline).toHaveClass('text-3xl text-center font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent')
+  })
+
+  test('renders description correctly', () => {
+    const desc = screen.getByText('Get early access (and the demo before anyone else)')
+    expect(desc).toBeInTheDocument()
+    expect(desc).toHaveClass('text-xl text-center mb-8')
+  })
+
+  test('renders join the waitlist link correctly', () => {
+    const links = screen.getAllByRole('link', { name: 'Join the waitlist' })
+    expect(links[1]).toBeInTheDocument()
+    expect(links[1]).toHaveAttribute('href', '/waitlist')
+    expect(links[1]).toHaveClass('flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all')
+  })
+
+  test('renders join the waitlist label correctly', () => {
+    const labels = screen.getAllByText('Join the waitlist')
+    expect(labels[1]).toBeInTheDocument()
+    expect(labels[1]).toHaveClass('text-lg font-bold text-white')
+  })
+
+  test('renders join the waitlist icon correctly', () => {
+    const icons = screen.getAllByTestId('waitlist-icon-button')
+    expect(icons[1]).toBeInTheDocument()
+    expect(icons[1]).toHaveClass('ml-2 w-5 h-auto')
   })
 })

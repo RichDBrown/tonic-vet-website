@@ -50,6 +50,14 @@ export default function LandingPage() {
           <Step num="3" numColor="text-secondary" numContainerColor="bg-[#0DA2E7]/20" title="Paste it into your PMS" desc="Review and tweak if needed, then copy and paste your finished notes directly into your practice management system." />
         </div>
       </section>
+      <section className="flex flex-col py-24 items-center">
+        <h2 className="text-3xl text-center font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Interested in Tonic Vet?</h2>
+        <p className="text-xl text-center mb-8" >Get early access (and the demo before anyone else)</p>
+        <Link href='/waitlist' className="flex items-center justify-center bg-primary hover:bg-[#5995F8] active:bg-[#5995F8] hover:shadow-button active:shadow-button rounded-full w-full py-3 transition-all">
+          <p className="text-lg font-bold text-white">Join the waitlist</p>
+          <Image data-testid="waitlist-icon-button" src={RightArrow} alt="" className="ml-2 w-5 h-auto" />
+        </Link>
+      </section>
     </main>
   );
 }
