@@ -1,9 +1,8 @@
-import FeatureCard from '@/app/_ui/feature-card'
 import LandingPage from '@/app/page'
-import { getByText, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent, { UserEvent } from '@testing-library/user-event'
 
-describe('First section of landing page', () => {
+describe('Landing section of landing page', () => {
   beforeEach(() => {
     render(<LandingPage />)
   })
@@ -104,7 +103,7 @@ describe('Dialog of landing page', () => {
   })
 })
 
-describe('Second section of landing page', () => {
+describe('Why vets love it section of landing page', () => {
   beforeEach(() => {
     render(<LandingPage />)
   })
